@@ -1,13 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-# 请提前使用 npm install 安装依赖的包，会自动放到当前 node_modules 目录下。
-
-# 脚本出错立即退出
+# 确保脚本抛出遇到的错误
 set -e
 
-# 生成静态文件，目录为 vuepress-docs/.vuepress/dist
-npm run build
+# 生成静态文件
+npm run docs:build
 
-rm -rf docs
+# 进入生成的文件夹
+cd docs/.vuepress/dist
 
-mv docs/.vuepress/dist docs
+# 如果是发布到自定义域名
+# echo 'www.example.com' > CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果发布到 https://<USERNAME>.github.io
+git push -f git@github.com:SucessK/SucessK.github.io.git main
+
+# 如果发布到 https://<USERNAME>.github.io/<REPO>
+# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+
+cd -
