@@ -1,11 +1,11 @@
-name: Build and Deploy
+name: Build and Deploy Master
 on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18
 
