@@ -3,14 +3,19 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
 
     - name: Checkout
       uses: actions/checkout@master
+    - name: Use Node.js ${{ matrix.node-version }} # 步骤2
+        uses: actions/setup-node@v3 # 作用：安装nodejs
+        with:
+          node-version: ${{ matrix.node-version }} # 版本  
 
     - name: vuepress-deploy
       uses: jenkey2011/vuepress-deploy@master
