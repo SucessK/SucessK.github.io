@@ -8,13 +8,16 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@master
-
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+          node-version: 18
 
     - name: vuepress-deploy
-      uses: jenkey2011/vuepress-deploy@master
+      uses: jenkey2011/vuepress-deploy@v1.8.1
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: SucessK/successk-blog
-        TARGET_BRANCH: gh_pages
+        TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn build
         BUILD_DIR: docs/.vuepress/dist
