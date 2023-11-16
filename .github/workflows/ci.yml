@@ -11,7 +11,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Use Node.js ${{ matrix.node-version }} # 步骤2
         uses: actions/setup-node@v3 # 作用：安装nodejs
         with:
