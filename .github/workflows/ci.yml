@@ -4,18 +4,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }} # 步骤2
-        uses: actions/setup-node@v3 # 作用：安装nodejs
-        with:
-          node-version: ${{ matrix.node-version }} # 版本  
+      uses: actions/checkout@master
+
 
     - name: vuepress-deploy
       uses: jenkey2011/vuepress-deploy@master
