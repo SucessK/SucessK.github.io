@@ -1,6 +1,6 @@
 ---
 title: 布局与功能禁用
-icon: gears
+icon: operate
 order: 3
 category:
   - 使用指南

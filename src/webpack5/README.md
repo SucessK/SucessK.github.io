@@ -1,7 +1,7 @@
 ---
 title: Webpack5
 index: false
-icon: laptop-code
+icon: module
 category:
   - 工程化
   - 构建工具
@@ -11,4 +11,4 @@ tag:
 
 ## 目录
 
-- [用webpack5构建site项目](webpack5-site.md)
+- [用webpack5构建site项目](1.md)

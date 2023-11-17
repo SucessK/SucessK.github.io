@@ -3,24 +3,24 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   "/demo/",
+  "/webpack5/",
   {
     text: "博文",
-    icon: "pen-to-square",
+    icon: "blog",
     prefix: "/posts/",
     children: [
       {
         text: "苹果",
-        icon: "pen-to-square",
+        icon: "app",
         prefix: "apple/",
         children: [
           { text: "苹果1", icon: "pen-to-square", link: "1" },
           "2",
         ],
       },
-      "tomato",
+      "jstabs",
     ],
   },
-  "/webpack5/",
   {
     text: "V2 文档",
     icon: "book",
