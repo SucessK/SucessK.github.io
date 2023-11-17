@@ -27,7 +27,7 @@ export default hopeTheme({
   // sidebar
   sidebar,
 
-  footer: "默认页脚",
+  footer: "s13 china must win",
 
   displayFooter: true,
 
@@ -163,7 +163,9 @@ export default hopeTheme({
       // install @vue/repl before enabling it
       // vuePlayground: true,
     },
-
+    copyCode: {
+      showInMobile:true
+    }
     // uncomment these if you want a PWA
     // pwa: {
     //   favicon: "/favicon.ico",

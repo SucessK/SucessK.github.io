@@ -16,6 +16,18 @@ export default sidebar({
       prefix: "posts/",
       children: "structure",
     },
+    {
+      text: 'TEST',
+      icon: "book",
+      prefix: "test/",
+      children: "structure",
+    },
+    {
+      text: 'Webpack5系列',
+      icon: "book",
+      prefix: "webpack5/",
+      children: "structure",
+    },
     "intro",
     "slides",
   ],
