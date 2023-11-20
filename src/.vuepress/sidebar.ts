@@ -23,9 +23,9 @@ export default sidebar({
       children: "structure",
     },
     {
-      text: 'Webpack5系列',
+      text: 'javascript文章',
       icon: "folder",
-      prefix: "webpack5/",
+      prefix: "javascript/",
       children: "structure",
     },
     "intro",
