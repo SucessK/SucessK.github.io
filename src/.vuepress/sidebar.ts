@@ -11,21 +11,21 @@ export default sidebar({
       children: "structure",
     },
     {
-      text: "文章",
+      text: "博文",
       icon: "folder",
       prefix: "posts/",
-      children: "structure",
-    },
-    {
-      text: 'TEST',
-      icon: "folder",
-      prefix: "test/",
       children: "structure",
     },
     {
       text: 'javascript文章',
       icon: "folder",
       prefix: "javascript/",
+      children: "structure",
+    },
+    {
+      text: '技术文档',
+      icon: "folder",
+      prefix: "doc/",
       children: "structure",
     },
     "intro",

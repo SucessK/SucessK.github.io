@@ -2,14 +2,13 @@
 icon: 'article'
 date: 2023-11-20
 category:
-  - 前端
+  - 前端构建工具
 tag:
-  - JS
   - Gulp
 editLink: false
 ---
 
-# Gulp：前端构建工具
+# Gulp.js
 
 ::: info 引言
 Gulp是一个基于Node.js的自动化构建工具，它使用简单的代码优于配置的策略，让开发过程更加简单和高效。Gulp使用可扩展的插件系统，能完成的任务包括：合并，压缩，测试，以及其他的构建任务。

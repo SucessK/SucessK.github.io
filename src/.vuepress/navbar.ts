@@ -15,6 +15,7 @@ const folderPath = path.join(__dirname,'../javascript');  // 填写所需文件�
 export default navbar([
   "/",
   "/demo/",
+  "/doc/",
   {
     text: "Javascript文章",
     icon: "module",
@@ -31,16 +32,19 @@ export default navbar([
     prefix: "/posts/",
     children: [
       {
-        text: "苹果",
-        icon: "app",
-        prefix: "apple/",
-        children: [
-          { text: "苹果1", icon: "pen-to-square", link: "1" },
-          "2",
-        ],
+        text: '前端构建工具',
+        prefix: "buildTool/",
+        children:[
+          "gulp"
+        ]
       },
-      "jstabs",
-      "gulp"
+      {
+        text: '前端技术随笔',
+        prefix: "essays/",
+        children:[
+          "jstabs"
+        ]
+      },
     ],
   },
   {

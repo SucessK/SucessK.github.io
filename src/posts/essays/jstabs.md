@@ -2,7 +2,7 @@
 icon: 'article'
 date: 2023-11-17
 category:
-  - 前端
+  - 前端技术随笔
 tag:
   - JS
 editLink: false
