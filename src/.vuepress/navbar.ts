@@ -16,16 +16,7 @@ export default navbar([
   "/",
   "/demo/",
   "/doc/",
-  {
-    text: "Javascript文章",
-    icon: "module",
-    prefix: "/javascript/",
-    children: getDynamicChildren(folderPath)
-    // children: [
-    //   "1",
-    //   "2"
-    // ],
-  },
+  "/javascript/",
   {
     text: "博文",
     icon: "blog",

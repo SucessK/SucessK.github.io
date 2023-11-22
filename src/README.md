@@ -6,38 +6,38 @@ title: 博客主页
 heroImage: /logo.svg
 heroText: Hello World !
 heroFullScreen: true
-tagline: WBG Must win ！ 
+tagline: study hard and you will be better and better 
 bgImage: https://img.likebizhi.com/uploads/likebizhi/up/2022/01/f8c5e22bc42f7dd4344a3a1d309a1de5414.jpg
 projects:
-  - icon: project
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
-
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: 如何使用
+    desc: 主要功能与配置演示
+    link: /demo/
+
+  - icon: project
+    name: 技术文档
+    desc: Git使用手册...
+    link: /doc/
 
   - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
-
-  - icon: article
-    name: Markdown增强
-    desc: 代码演示
-    link: /test/
+    name: Javascript文章
+    desc: 非常实用的代码
+    link: /javascript/
 
   - icon: friend
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+    name: Vite
+    desc: 下一代的前端工具链,为开发提供极速响应
+    link: https://cn.vitejs.dev/
+
+  - icon: vue
+    name: Vue.js
+    desc: 渐进式JavaScript 框架
+    link: https://cn.vuejs.org/
 
   - icon: /logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
+    name: V2文档
+    desc: VuePress Theme Hope
+    link: https://theme-hope.vuejs.press/zh/guide/
 
 footer: hello Welcome to the blog
 
