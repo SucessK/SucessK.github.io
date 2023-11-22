@@ -35,7 +35,8 @@ export default navbar([
         text: '前端构建工具',
         prefix: "buildTool/",
         children:[
-          "gulp"
+          "gulp",
+          "webpack5"
         ]
       },
       {
