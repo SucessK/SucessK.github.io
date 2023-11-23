@@ -24,6 +24,11 @@ projects:
     desc: 非常实用的代码
     link: /javascript/
 
+  - icon: javascript
+    name: JavaScript 标准参考教程
+    desc:  阮一峰
+    link: https://wangdoc.com/javascript/
+
   - icon: friend
     name: Vite
     desc: 下一代的前端工具链,为开发提供极速响应
