@@ -10,3 +10,4 @@ category:
 ## 目录
 
 - [跨标签页通讯](jstabs.md)
+- [点击拖拽鼠标事件](dragmouse.md)

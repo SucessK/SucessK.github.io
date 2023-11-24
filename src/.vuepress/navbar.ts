@@ -34,7 +34,8 @@ export default navbar([
         text: '前端技术随笔',
         prefix: "essays/",
         children:[
-          "jstabs"
+          "jstabs",
+          "dragmouse"
         ]
       },
     ],
