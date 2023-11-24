@@ -29,6 +29,16 @@ projects:
     desc:  阮一峰
     link: https://wangdoc.com/javascript/
 
+  - icon: /tailwind.svg
+    name: tailwind
+    desc: 一个流行的原子化 css 框架
+    link: https://tailwindui.com/
+
+  - icon: /tailwind.svg
+    name: tailwind入门文章
+    desc: 知乎
+    link: https://zhuanlan.zhihu.com/p/628433321
+
   - icon: friend
     name: Vite
     desc: 下一代的前端工具链,为开发提供极速响应
