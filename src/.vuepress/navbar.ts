@@ -35,7 +35,8 @@ export default navbar([
         prefix: "essays/",
         children:[
           "jstabs",
-          "dragmouse"
+          "dragmouse",
+          "babel"
         ]
       },
     ],
