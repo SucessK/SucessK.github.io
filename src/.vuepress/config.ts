@@ -3,7 +3,7 @@ import theme from "./theme.js";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 export default defineUserConfig({
   base: "/",
-
+  port: 8099,
   lang: "zh-CN",
   title: "wang's blog",
   description: "vuepress-theme-hope",
