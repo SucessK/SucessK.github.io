@@ -103,19 +103,19 @@ Promise的作用：Promise是异步微任务，解决了异步多层嵌套回调
 
 Promise使用：Promise是ES6提供的一个构造函数，可以使用Promise构造函数new一个实例，Promise构造函数接收一个函数作为参数，
 
-这个函数有两个参数，分别是两个函数 \`resolve\`和\`reject\`，\`resolve\`将Promise的状态由等待变为成功，将异步操作的结果作为参数传递过去；\`reject\`则将状态由等待转变为失败，在异步操作失败时调用，将异步操作报出的错误作为参数传递过去。
+这个函数有两个参数，分别是两个函数 `resolve`和`reject\`，\`resolve\`将Promise的状态由等待变为成功，将异步操作的结果作为参数传递过去；\`reject\`则将状态由等待转变为失败，在异步操作失败时调用，将异步操作报出的错误作为参数传递过去。
 
 实例创建完成后，可以使用\`then\`方法分别指定成功或失败的回调函数，也可以使用catch捕获失败，then和catch最终返回的也是一个Promise，所以可以链式调用。
 
 Promise的特点：
 
-1\. 对象的状态不受外界影响（Promise对象代表一个异步操作，有三种状态）。 - pending（执行中） - Resolved（成功，又称Fulfilled） - rejected（拒绝） 其中pending为初始状态，fulfilled和rejected为结束状态（结束状态表示promise的生命周期已结束）。
+1. 对象的状态不受外界影响（Promise对象代表一个异步操作，有三种状态）。 - pending（执行中） - Resolved（成功，又称Fulfilled） - rejected（拒绝） 其中pending为初始状态，fulfilled和rejected为结束状态（结束状态表示promise的生命周期已结束）。
 
-2\. 一旦状态改变，就不会再变，任何时候都可以得到这个结果。 Promise对象的状态改变，只有两种可能（状态凝固了，就不会再变了，会一直保持这个结果）： - 从Pending变为Resolved - 从Pending变为Rejected
+2. 一旦状态改变，就不会再变，任何时候都可以得到这个结果。 Promise对象的状态改变，只有两种可能（状态凝固了，就不会再变了，会一直保持这个结果）： - 从Pending变为Resolved - 从Pending变为Rejected
 
-3\. resolve 方法的参数是then中回调函数的参数，reject 方法中的参数是catch中的参数
+3. resolve 方法的参数是then中回调函数的参数，reject 方法中的参数是catch中的参数
 
-4\. then 方法和 catch方法 只要不报错，返回的都是一个fullfilled状态的promise
+4. then 方法和 catch方法 只要不报错，返回的都是一个fullfilled状态的promise
 
 加分回答
 
@@ -787,11 +787,11 @@ CSRF攻击的过程原理是：
 
 预防CSRF攻击主要有以下策略：
 
-1) 使用验证码，在表单中添加一个随机的数字或者字母验证码，强制要求用户和应用进行直接的交互。
+1. 使用验证码，在表单中添加一个随机的数字或者字母验证码，强制要求用户和应用进行直接的交互。
 
-2) HTTP中Referer字段，检查是不是从正确的域名访问过来，它记录了HTTP请求的来源地址。
+2. HTTP中Referer字段，检查是不是从正确的域名访问过来，它记录了HTTP请求的来源地址。
 
-3) 使用token验证，在HTTP请求头中添加token字段，并且在服务器端建立一个拦截器验证这个token，如果token不对，就拒绝这个请求。
+3. 使用token验证，在HTTP请求头中添加token字段，并且在服务器端建立一个拦截器验证这个token，如果token不对，就拒绝这个请求。
 
 加分回答
 
@@ -1309,7 +1309,7 @@ SSR是Server Side Render简称；页面上的内容是通过服务端渲染生�
 
 标准回答
 
-展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。常见的场景：等价于apply的方式、将数组展开为构造函数的参数、字面量数组或字符串连接不需要使用concat等方法了、构造字面量对象时,进行浅克隆或者属性拷贝 加分回答 只能用于可迭代对象 在数组或函数参数中使用展开语法时, 该语法只能用于 可迭代对象： var obj = {'key1': 'value1'}; var array = \[...obj\]; // TypeError: obj is not iterable 剩余语法（剩余参数） 剩余语法(Rest syntax) 看起来和展开语法完全相同，不同点在于, 剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素。
+展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。常见的场景：等价于apply的方式、将数组展开为构造函数的参数、字面量数组或字符串连接不需要使用concat等方法了、构造字面量对象时,进行浅克隆或者属性拷贝 加分回答 只能用于可迭代对象 在数组或函数参数中使用展开语法时, 该语法只能用于 可迭代对象： var obj = {'key1': 'value1'}; var array = [...obj]; // TypeError: obj is not iterable 剩余语法（剩余参数） 剩余语法(Rest syntax) 看起来和展开语法完全相同，不同点在于, 剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素。
 
 ```js
 function f(...[a, b, c]) { return a + b + c; } 
