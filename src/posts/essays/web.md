@@ -259,7 +259,8 @@ CSS样式的优先级应该分成四大类
 
 永远不要在你的插件中使用 `!important`
 
-永远不要在全站范围的 CSS 代码中使用 `!important` 优先级的比较指的是相同的样式属性，不同样式属性优先级比较失效，比如：在设置`max-width`时注意，已经给元素的`max-width`设置了`!important`但是还不生效，很有可能就是被width覆盖了 举例：`div`最终的宽度还是`200px` div { max-width: 400px !important; height: 200px;background-color: tomato; width: 200px; }
+永远不要在全站范围的 CSS 代码中使用 `!important` 优先级的比较指的是相同的样式属性，不同样式属性优先级比较失效，比如：在设置`max-width`时注意，已经给元素的`max-width`设置了`!important`但是还不生效，很有可能就是被width覆盖了 举例：`div`最终的宽度还是`200px` 
+`div { max-width: 400px !important; height: 200px;background-color: tomato; width: 200px; }`
 
 ## 10，**说一说JS实现异步的方法？**
 
@@ -381,7 +382,11 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 清除浮动的方法：
 
-伪元素清除浮动：给浮动元素父级增加 .clearfix::after { content: ''; display: table; clear: both; } /*兼容IE低版本 */ .clearfix { *zoom: 1; } overflow：hidden`：给浮动元素父级增加`overflow：hidden`属性
+伪元素清除浮动：给浮动元素父级增加 
+```
+.clearfix::after { content: ''; display: table; clear: both; } /*兼容IE低版本 */ .clearfix { *zoom: 1; } overflow：hidden`：给浮动元素父级增加`overflow：hidden`属性
+```
+
 
 额外标签法：给浮动元素父级增加标签
 
@@ -1063,7 +1068,7 @@ CSS盒模型定义了盒的每个部分包含 margin, border, padding, content �
 
 伪数组的常见场景：
 
-函数的参数arguments -原生js获取DOM：document.querySelector('div') 等 -jquery获取DOM：$(“div”)等
+函数的参数arguments -原生js获取DOM：`document.querySelector('div')` 等 -jquery获取DOM：`$(“div”)`等
 
 加分回答
 
