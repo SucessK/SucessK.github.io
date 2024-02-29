@@ -60,14 +60,16 @@ JS数据类型分为两类：一类是基本数据类型，也叫简单数据类
 
 Symbol是ES6新出的一种数据类型，这种数据类型的特点就是没有重复的数据，可以作为object的key。  
 数据的创建方法Symbol()，因为它的构造函数不够完整，所以不能使用new Symbol()创建数据。由于Symbol()创建数据具有唯一性，所以 Symbol() !== Symbol(), 同时使用Symbol数据作为key不能使用for获取到这个key，需要使用Object.getOwnPropertySymbols(obj)获得这个obj对象中key类型是Symbol的key值。  
+```
 let key = Symbol('key');  
-let obj = { \[key\]: 'symbol'};  
-let keyArray = Object.getOwnPropertySymbols(obj); // 返回一个数组\[Symbol('key')\]  
-obj\[keyArray\[0\]\] // 'symbol'  
+let obj = { [key]: 'symbol'};  
+let keyArray = Object.getOwnPropertySymbols(obj); // 返回一个数组[Symbol('key')]  
+obj[keyArray[0]] // 'symbol'  
+```
 BigInt也是ES6新出的一种数据类型，这种数据类型的特点就是数据涵盖的范围大，能够解决超出普通数据类型范围报错的问题。  
 使用方法：  
-\-整数末尾直接+n：647326483767797n  
-\-调用BigInt()构造函数：BigInt("647326483767797")
+-整数末尾直接+n：647326483767797n  
+-调用BigInt()构造函数：BigInt("647326483767797")
 
 注意：BigInt和Number之间不能进行混合操作
 
@@ -103,9 +105,9 @@ Promise的作用：Promise是异步微任务，解决了异步多层嵌套回调
 
 Promise使用：Promise是ES6提供的一个构造函数，可以使用Promise构造函数new一个实例，Promise构造函数接收一个函数作为参数，
 
-这个函数有两个参数，分别是两个函数 `resolve`和`reject\`，\`resolve\`将Promise的状态由等待变为成功，将异步操作的结果作为参数传递过去；\`reject\`则将状态由等待转变为失败，在异步操作失败时调用，将异步操作报出的错误作为参数传递过去。
+这个函数有两个参数，分别是两个函数 `resolve`和`reject`，`resolve`将Promise的状态由等待变为成功，将异步操作的结果作为参数传递过去；`reject`则将状态由等待转变为失败，在异步操作失败时调用，将异步操作报出的错误作为参数传递过去。
 
-实例创建完成后，可以使用\`then\`方法分别指定成功或失败的回调函数，也可以使用catch捕获失败，then和catch最终返回的也是一个Promise，所以可以链式调用。
+实例创建完成后，可以使用`then`方法分别指定成功或失败的回调函数，也可以使用catch捕获失败，then和catch最终返回的也是一个Promise，所以可以链式调用。
 
 Promise的特点：
 
@@ -143,7 +145,7 @@ Promise.race()：当参数里的任意一个子promise被成功或失败后，�
 
 跨域解决方案  
 cors：目前最常用的一种解决办法，通过设置后端允许跨域实现。  
-res.setHeader('Access-Control-Allow-Origin', '\*');  
+res.setHeader('Access-Control-Allow-Origin', '*');  
 res.setHeader("Access-Control-Allow-Methods", "GET, PUT, OPTIONS, POST");  
 node中间件、nginx反向代理：跨域限制的时候浏览器不能跨域访问服务器，node中间件和nginx反向代理，都是让请求发给代理服务器，静态页面面和代理服务器是同源的，然后代理服务器再向后端服务器发请求，服务器和服务器之间不存在同源限制。  
 JSONP：利用的原理是script标签可以跨域请求资源，将回调函数作为参数拼接在url中。后端收到请求，调用该回调函数，并将数据作为参数返回去，注意设置响应头返回文档类型，应该设置成javascript。  
@@ -163,11 +165,11 @@ BFC(Block Formatting Context)块级格式化上下文，是Web页面一块独立
 
 BFC布局规则 -内部盒子会在垂直方向，一个接一个地放置。 -Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。 -每个盒子（块盒与行盒）的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。 -BFC的区域不会与float box重叠。 -BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。 -计算BFC的高度时，浮动元素也参与计算。
 
-BFC形成的条件 -\`float \`设置成 \`left \`或 \`right\` -\`position \`是\`absolute\`或者\`fixed\` -\`overflow \`不是\`visible\`，为 \`auto\`、\`scroll\`、\`hidden\` -\`display\`是\`flex\`或者\`inline-block\` 等 BFC解决能的问题：清除浮动
+BFC形成的条件 -`float `设置成 `left `或 `right` -`position `是`absolute`或者`fixed` -`overflow `不是`visible`，为 `auto`、`scroll`、`hidden` -`display`是`flex`或者`inline-block` 等 BFC解决能的问题：清除浮动
 
 加分回答
 
-BFC的方式都能清除浮动，但是常使用的清除浮动的BFC方式只有\`overflow:hidden\`,原因是使用float或者position方式清除浮动，虽然父级盒子内部浮动被清除了，但是父级本身又脱离文档流了，会对父级后面的兄弟盒子的布局造成影响。如果设置父级为\`display:flex\`，内部的浮动就会失效。所以通常只是用\`overflow: hidden\`清除浮动。
+BFC的方式都能清除浮动，但是常使用的清除浮动的BFC方式只有`overflow:hidden`,原因是使用float或者position方式清除浮动，虽然父级盒子内部浮动被清除了，但是父级本身又脱离文档流了，会对父级后面的兄弟盒子的布局造成影响。如果设置父级为`display:flex`，内部的浮动就会失效。所以通常只是用`overflow: hidden`清除浮动。
 
 IFC（Inline formatting contexts）：内联格式上下文。IFC的高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)，IFC中的line box一般左右都贴紧整个IFC，但是会因为float元素而扰乱。
 
@@ -195,7 +197,7 @@ action属性类似于 mutation，不同在于：Action 提交的是 mutation，�
 
 moudle属性是将store分割成模块。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块，从上至下进行同样方式的分割
 
-使用方法： state ：直接以对象方式添加属性 mutations ：通过\`store.commit\`调用 action：通过 \`store.dispatch\` 方法触发 getters：直接通过store.getters.调用
+使用方法： state ：直接以对象方式添加属性 mutations ：通过`store.commit`调用 action：通过 `store.dispatch` 方法触发 getters：直接通过store.getters.调用
 
 加分回答
 
@@ -223,7 +225,7 @@ Object.prototype.toString.call()：适用于所有类型的判断检测，检测
 
 加分回答
 
-instanceof的实现原理：验证当前类的原型prototype是否会出现在实例的原型链\_\_proto\_\_上，只要在它的原型链上，则结果都为true。因此，\`instanceof\` 在查找的过程中会遍历左边变量的原型链，直到找到右边变量的 \`prototype\`，找到返回true，未找到返回false。
+instanceof的实现原理：验证当前类的原型prototype是否会出现在实例的原型链__proto__上，只要在它的原型链上，则结果都为true。因此，`instanceof` 在查找的过程中会遍历左边变量的原型链，直到找到右边变量的 `prototype`，找到返回true，未找到返回false。
 
 Object.prototype.toString.call()原理：Object.prototype.toString 表示一个返回对象类型的字符串，call()方法可以改变this的指向，那么把Object.prototype.toString()方法指向不同的数据类型上面，返回不同的结果
 
@@ -231,13 +233,13 @@ Object.prototype.toString.call()原理：Object.prototype.toString 表示一个�
 
 得分点
 
-\`!important\`、行内样式、嵌入样式、外链样式、id选择器、类选择器、标签选择器、复合选择器、通配符、继承样式
+`!important`、行内样式、嵌入样式、外链样式、id选择器、类选择器、标签选择器、复合选择器、通配符、继承样式
 
 标准回答
 
 CSS样式的优先级应该分成四大类
 
-第一类\`!important\`，无论引入方式是什么，选择器是什么，它的优先级都是最高的。
+第一类`!important`，无论引入方式是什么，选择器是什么，它的优先级都是最高的。
 
 第二类引入方式，行内样式的优先级要高于嵌入和外链，嵌入和外链如果使用的选择器相同就看他们在页面中插入的顺序，在后面插入的会覆盖前面的。
 
@@ -251,13 +253,13 @@ CSS样式的优先级应该分成四大类
 
 使用!important要谨慎
 
-一定要优先考虑使用样式规则的优先级来解决问题而不是 \`!important\`
+一定要优先考虑使用样式规则的优先级来解决问题而不是 `!important`
 
-只有在需要覆盖全站或外部 CSS 的特定页面中使用 \`!important\`
+只有在需要覆盖全站或外部 CSS 的特定页面中使用 `!important`
 
-永远不要在你的插件中使用 \`!important\`
+永远不要在你的插件中使用 `!important`
 
-永远不要在全站范围的 CSS 代码中使用 \`!important\` 优先级的比较指的是相同的样式属性，不同样式属性优先级比较失效，比如：在设置\`max-width\`时注意，已经给元素的\`max-width\`设置了\`!important\`但是还不生效，很有可能就是被width覆盖了 举例：\`div\`最终的宽度还是\`200px\` div { max-width: 400px !important; height: 200px;background-color: tomato; width: 200px; }
+永远不要在全站范围的 CSS 代码中使用 `!important` 优先级的比较指的是相同的样式属性，不同样式属性优先级比较失效，比如：在设置`max-width`时注意，已经给元素的`max-width`设置了`!important`但是还不生效，很有可能就是被width覆盖了 举例：`div`最终的宽度还是`200px` div { max-width: 400px !important; height: 200px;background-color: tomato; width: 200px; }
 
 ## 10，**说一说JS实现异步的方法？**
 
@@ -273,7 +275,7 @@ CSS样式的优先级应该分成四大类
 
 Promise不仅能够捕获错误，而且也很好地解决了回调地狱的问题，缺点是无法取消 Promise，错误需要通过回调函数捕获。
 
-Generator 函数是 ES6 提供的一种异步编程解决方案，Generator 函数是一个状态机，封装了多个内部状态，可暂停函数, yield可暂停，next方法可启动，每次返回的是yield后的表达式结果。优点是异步语义清晰，缺点是手动迭代\`Generator\` 函数很麻烦，实现逻辑有点绕
+Generator 函数是 ES6 提供的一种异步编程解决方案，Generator 函数是一个状态机，封装了多个内部状态，可暂停函数, yield可暂停，next方法可启动，每次返回的是yield后的表达式结果。优点是异步语义清晰，缺点是手动迭代`Generator` 函数很麻烦，实现逻辑有点绕
 
 async/await是基于Promise实现的，async/await使得异步代码看起来像同步代码，所以优点是，使用方法清晰明了，缺点是awt 将异步代码改造成了同步代码，如果多个异步代码没有依赖性却使用了 awt 会导致性能上的降低，代码没有依赖性的话，完全可以使用 Promise.all 的方式。
 
@@ -315,11 +317,11 @@ Object.defineProperty API的使用
 
 Object.defineProperty的缺点
 
-1\. 一次性递归到底开销很大，如果数据很大，大量的递归导致调用栈溢出
+1. 一次性递归到底开销很大，如果数据很大，大量的递归导致调用栈溢出
 
-2\. 不能监听对象的新增属性和删除属性
+2. 不能监听对象的新增属性和删除属性
 
-3\. 无法正确的监听数组的方法，当监听的下标对应的数据发生改变时
+3. 无法正确的监听数组的方法，当监听的下标对应的数据发生改变时
 
 ## 12，**说一说数组去重都有哪些方法？**
 
@@ -333,7 +335,7 @@ Object.defineProperty的缺点
 
 第二种方法：利用Set类型数据无重复项：new 一个 Set，参数为需要去重的数组，Set 会自动删除重复的元素，再将 Set 转为数组返回。这个方法的优点是效率更高，代码简单，思路清晰，缺点是可能会有兼容性问题
 
-第三种方法：filter+indexof 去重：这个方法和第一种方法类似，利用 Array 自带的 filter 方法，返回 arr.indexOf(num) 等于 index 的num。原理就是 indexOf 会返回最先找到的数字的索引，假设数组是 \[1, 1\]，在对第二个1使用 indexOf 方法时，返回的是第一个1的索引0。这个方法的优点是可以在去重的时候插入对元素的操作，可拓展性强。
+第三种方法：filter+indexof 去重：这个方法和第一种方法类似，利用 Array 自带的 filter 方法，返回 arr.indexOf(num) 等于 index 的num。原理就是 indexOf 会返回最先找到的数字的索引，假设数组是 [1, 1]，在对第二个1使用 indexOf 方法时，返回的是第一个1的索引0。这个方法的优点是可以在去重的时候插入对元素的操作，可拓展性强。
 
 第四种方法：这个方法比较巧妙，从头遍历数组，如果元素在前面出现过，则将当前元素挪到最后面，继续遍历，直到遍历完所有元素，之后将那些被挪到后面的元素抛弃。这个方法因为是直接操作数组，占用内存较少。
 
@@ -347,7 +349,7 @@ Object.defineProperty的缺点
 
 得分点
 
-操作的变量没有被赋值、全局对象的一个属性、函数没有return返回值、值 \`null\` 特指对象的值未设置 undefined == null、undefined !== null
+操作的变量没有被赋值、全局对象的一个属性、函数没有return返回值、值 `null` 特指对象的值未设置 undefined == null、undefined !== null
 
 标准回答
 
@@ -365,7 +367,7 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 得分点
 
-脱离文档流、盒子塌陷、 影响其他元素排版、伪元素 、\`overflow:hidden\` 、标签插入法
+脱离文档流、盒子塌陷、 影响其他元素排版、伪元素 、`overflow:hidden` 、标签插入法
 
 标准回答
 
@@ -379,11 +381,11 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 清除浮动的方法：
 
-伪元素清除浮动：给浮动元素父级增加 .clearfix::after { content: ''; display: table; clear: both; } /\*兼容IE低版本 \*/ .clearfix { \*zoom: 1; } overflow：hidden\`：给浮动元素父级增加\`overflow：hidden\`属性
+伪元素清除浮动：给浮动元素父级增加 .clearfix::after { content: ''; display: table; clear: both; } /*兼容IE低版本 */ .clearfix { *zoom: 1; } overflow：hidden`：给浮动元素父级增加`overflow：hidden`属性
 
 额外标签法：给浮动元素父级增加标签
 
-加分回答 三种清除浮动的特点和影响 -伪元素清除浮动：不会新增标签，不会有其他影响，是当下清除浮动最流行的方法 -\`overflow：hidden\`：不会新增标签，但是如果父级元素有定位元素超出父级，超出部分会隐藏，在不涉及父级元素有超出内容的情况，overflow：hidden比较常用，毕竟写法方便简洁 -标签插入法：清除浮动的语法加在新增标签上，由于新增标签会造成不必要的渲染，所以这种方法目前不建议使用
+加分回答 三种清除浮动的特点和影响 -伪元素清除浮动：不会新增标签，不会有其他影响，是当下清除浮动最流行的方法 -`overflow：hidden`：不会新增标签，但是如果父级元素有定位元素超出父级，超出部分会隐藏，在不涉及父级元素有超出内容的情况，overflow：hidden比较常用，毕竟写法方便简洁 -标签插入法：清除浮动的语法加在新增标签上，由于新增标签会造成不必要的渲染，所以这种方法目前不建议使用
 
 ## 15，**说一说es6中箭头函数？**
 
@@ -397,7 +399,7 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 箭头函数有两种写法，当函数体是单条语句的时候可以省略{}和return。另一种是包含多条语句，不可以省略{}和return。
 
-箭头函数最大的特点就是没有this，所以this是从外部获取，就是继承外部的执行上下文中的this，由于没有this关键字所以箭头函数也不能作为构造函数， 同时通过 \`call()\` 或 \`apply()\` 方法调用一个函数时，只能传递参数（不能绑定this），第一个参数会被忽略。
+箭头函数最大的特点就是没有this，所以this是从外部获取，就是继承外部的执行上下文中的this，由于没有this关键字所以箭头函数也不能作为构造函数， 同时通过 `call()` 或 `apply()` 方法调用一个函数时，只能传递参数（不能绑定this），第一个参数会被忽略。
 
 箭头函数也没有原型和super。不能使用yield关键字，因此箭头函数不能用作 Generator 函数。不能返回直接对象字面量。
 
@@ -405,13 +407,13 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 箭头函数的不适用场景：
 
-定义对象上的方法 当调用\` dog.jumps\` 时，\`lives\` 并没有递减。因为 \`this\` 没有绑定值，而继承父级作用域。 var dog = { lives: 20, jumps: () => { this.lives--; } }
+定义对象上的方法 当调用` dog.jumps` 时，`lives` 并没有递减。因为 `this` 没有绑定值，而继承父级作用域。 var dog = { lives: 20, jumps: () => { this.lives--; } }
 
 不适合做事件处理程序 此时触发点击事件，this不是button，无法进行class切换 var button = document.querySelector('button'); button.addEventListener('click', () => { this.classList.toggle('on'); });
 
 箭头函数函数适用场景：
 
-简单的函数表达式，内部没有this引用，没有递归、事件绑定、解绑定，适用于map、filter等方法中，写法简洁 var arr = \[1,2,3\]; var newArr = arr.map((num)=>num\*num)
+简单的函数表达式，内部没有this引用，没有递归、事件绑定、解绑定，适用于map、filter等方法中，写法简洁 var arr = [1,2,3]; var newArr = arr.map((num)=>num*num)
 
 内层函数表达式，需要调用this，且this应与外层函数一致时
 
@@ -496,9 +498,9 @@ this关键字由来：在对象内部的方法中使用对象内部的属性是�
 
 this存在的场景有三种全局执行上下文和函数执行上下文和eval执行上下文，eval这种不讨论。
 
-在全局执行环境中无论是否在严格模式下，（在任何函数体外部）\`this\` 都指向全局对象。
+在全局执行环境中无论是否在严格模式下，（在任何函数体外部）`this` 都指向全局对象。
 
-在函数执行上下文中访问this，函数的调用方式决定了 \`this\` 的值。
+在函数执行上下文中访问this，函数的调用方式决定了 `this` 的值。
 
 在全局环境中调用一个函数，函数内部的 this 指向的是全局变量 window，通过一个对象来调用其内部的一个方法，该方法的执行上下文中的 this 指向对象本身。
 
@@ -539,7 +541,7 @@ px、rem、em、vw、vh
 
 px：pixel像素的缩写，绝对长度单位，它的大小取决于屏幕的分辨率，是开发网页中常常使用的单位。
 
-em：相对长度单位，在 \`font-size\` 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width。如当前元素的字体尺寸未设置，由于字体大小可继承的原因，可逐级向上查找，最终找不到则相对于浏览器默认字体大小。
+em：相对长度单位，在 `font-size` 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小，如 width。如当前元素的字体尺寸未设置，由于字体大小可继承的原因，可逐级向上查找，最终找不到则相对于浏览器默认字体大小。
 
 rem：相对长度单位，相对于根元素的字体大小，根元素字体大小未设置，使用浏览器默认字体大小。
 
@@ -555,14 +557,14 @@ vw应用：由于vw被更多浏览器兼容之后，在做移动端响应式页�
 
 ## 20，**说几个未知宽高元素水平垂直居中方法**
 
-\`position\` \`transform\` \`flex\` \`justify-content\` \`align-items\` \`vertical-align\` \`text-align\`
+`position` `transform` `flex` `justify-content` `align-items` `vertical-align` `text-align`
 
 标准回答  
 未知宽高元素水平垂直都居中的实现方法：  
-1\. 设置元素相对父级定位\`position:absolute;left:50%;right:50%\`，让自身平移自身高度50% \`transform: translate(-50%,-50%);\`，这种方式兼容性好，被广泛使用的一种方式  
-2\. 设置元素的父级为弹性盒子\`display:flex\`，设置父级和盒子内部子元素水平垂直都居中\`justify-content:center; align-items:center\` ，这种方式代码简洁，但是兼容性ie 11以上支持，由于目前ie版本都已经很高，很多网站现在也使用这种方式实现水平垂直居中  
-3\. 设置元素的父级为网格元素\`display: grid\`，设置父级和盒子内部子元素水平垂直都居中\`justify-content:center; align-items:center\` ，这种方式代码简介，但是兼容性ie 10以上支持  
-4\. 设置元素的父级为表格元素\`display: table-cell\`，其内部元素水平垂直都居中\`text-align: center;vertical-align: middle;\` ，设置子元素为行内块\`display: inline-block; \`，这种方式兼容性较好
+1. 设置元素相对父级定位`position:absolute;left:50%;right:50%`，让自身平移自身高度50% `transform: translate(-50%,-50%);`，这种方式兼容性好，被广泛使用的一种方式  
+2. 设置元素的父级为弹性盒子`display:flex`，设置父级和盒子内部子元素水平垂直都居中`justify-content:center; align-items:center` ，这种方式代码简洁，但是兼容性ie 11以上支持，由于目前ie版本都已经很高，很多网站现在也使用这种方式实现水平垂直居中  
+3. 设置元素的父级为网格元素`display: grid`，设置父级和盒子内部子元素水平垂直都居中`justify-content:center; align-items:center` ，这种方式代码简介，但是兼容性ie 10以上支持  
+4. 设置元素的父级为表格元素`display: table-cell`，其内部元素水平垂直都居中`text-align: center;vertical-align: middle;` ，设置子元素为行内块`display: inline-block; `，这种方式兼容性较好
 
 ## 21，**说一说JS变量提升？**
 
@@ -578,21 +580,21 @@ Var声明的变量声明提升、函数声明提升、let和const变量不提升
 
 得分点
 
-\`#\` \`window.onhashchange\` \`history.pushState \` \`window.onpopstate\`
+`#` `window.onhashchange` `history.pushState ` `window.onpopstate`
 
 标准回答
 
 HashRouter和 HistoryRouter的区别：
 
-1\. history和hash都是利用浏览器的两种特性实现前端路由，history是利用浏览历史记录栈的API实现，hash是监听location对象hash值变化事件来实现
+1. history和hash都是利用浏览器的两种特性实现前端路由，history是利用浏览历史记录栈的API实现，hash是监听location对象hash值变化事件来实现
 
-2\. history的url没有'#'号，hash反之
+2. history的url没有'#'号，hash反之
 
-3\. 相同的url，history会触发添加到浏览器历史记录栈中，hash不会触发，history需要后端配合，如果后端不配合刷新新页面会出现404，hash不需要。
+3. 相同的url，history会触发添加到浏览器历史记录栈中，hash不会触发，history需要后端配合，如果后端不配合刷新新页面会出现404，hash不需要。
 
-HashRouter的原理：通过\`window.onhashchange\`方法获取新URL中hash值，再做进一步处理
+HashRouter的原理：通过`window.onhashchange`方法获取新URL中hash值，再做进一步处理
 
-HistoryRouter的原理：通过\`history.pushState \`使用它做页面跳转不会触发页面刷新，使用\`window.onpopstate\` 监听浏览器的前进和后退，再做其他处理 加分回答 hash模式下url会带有#，需要url更优雅时，可以使用history模式。 需要兼容低版本的浏览器时，建议使用hash模式。 需要添加任意类型数据到记录时，可以使用history模式
+HistoryRouter的原理：通过`history.pushState `使用它做页面跳转不会触发页面刷新，使用`window.onpopstate` 监听浏览器的前进和后退，再做其他处理 加分回答 hash模式下url会带有#，需要url更优雅时，可以使用history模式。 需要兼容低版本的浏览器时，建议使用hash模式。 需要添加任意类型数据到记录时，可以使用history模式
 
 ## 23，**说一说map 和 forEach 的区别？**
 
@@ -665,7 +667,7 @@ handler: 是一个对象，其声明了代理target 的一些操作，其属性�
 
 加分回答
 
-\`Object.defineProperty\` 的问题：在Vue中，\`Object.defineProperty\`无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。目前只针对以上方法做了hack处理，所以数组属性是检测不到的，有局限性Object.defineProperty只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue里，是通过递归以及遍历data对象来实现对数据的监控的，如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象，不管是对操作性还是性能都会有一个很大的提升。
+`Object.defineProperty` 的问题：在Vue中，`Object.defineProperty`无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。目前只针对以上方法做了hack处理，所以数组属性是检测不到的，有局限性Object.defineProperty只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue里，是通过递归以及遍历data对象来实现对数据的监控的，如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象，不管是对操作性还是性能都会有一个很大的提升。
 
 Proxy的两个优点：可以劫持整个对象，并返回一个新对象，有13种劫持
 
@@ -681,15 +683,15 @@ Diff算法比较过程
 
 第一步：patch函数中对新老节点进行比较 如果新节点不存在就销毁老节点 如果老节点不存在，直接创建新的节点 当两个节点是相同节点的时候，进入 patctVnode 的过程，比较两个节点的内部
 
-第二步：patchVnode函数比较两个虚拟节点内部 如果两个虚拟节点完全相同，返回 当前vnode 的children 不是textNode，再分成三种情况 - 有新children，没有旧children，创建新的 - 没有新children，有旧children，删除旧的 - 新children、旧children都有，执行\`updateChildren\`比较children的差异，这里就是diff算法的核心 当前vnode 的children 是textNode，直接更新text
+第二步：patchVnode函数比较两个虚拟节点内部 如果两个虚拟节点完全相同，返回 当前vnode 的children 不是textNode，再分成三种情况 - 有新children，没有旧children，创建新的 - 没有新children，有旧children，删除旧的 - 新children、旧children都有，执行`updateChildren`比较children的差异，这里就是diff算法的核心 当前vnode 的children 是textNode，直接更新text
 
-第三步：updateChildren函数子节点进行比较 - 第一步 头头比较。若相似，旧头新头指针后移（即 \`oldStartIdx++\` && \`newStartIdx++\`），真实dom不变，进入下一次循环；不相似，进入第二步。 - 第二步 尾尾比较。若相似，旧尾新尾指针前移（即 \`oldEndIdx--\` && \`newEndIdx--\`），真实dom不变，进入下一次循环；不相似，进入第三步。 - 第三步 头尾比较。若相似，旧头指针后移，新尾指针前移（即 \`oldStartIdx++\` && \`newEndIdx--\`），未确认dom序列中的头移到尾，进入下一次循环；不相似，进入第四步。
+第三步：updateChildren函数子节点进行比较 - 第一步 头头比较。若相似，旧头新头指针后移（即 `oldStartIdx++` && `newStartIdx++`），真实dom不变，进入下一次循环；不相似，进入第二步。 - 第二步 尾尾比较。若相似，旧尾新尾指针前移（即 `oldEndIdx--` && `newEndIdx--`），真实dom不变，进入下一次循环；不相似，进入第三步。 - 第三步 头尾比较。若相似，旧头指针后移，新尾指针前移（即 `oldStartIdx++` && `newEndIdx--`），未确认dom序列中的头移到尾，进入下一次循环；不相似，进入第四步。
 
-第四步 尾头比较。若相似，旧尾指针前移，新头指针后移（即 \`oldEndIdx--\` && \`newStartIdx++\`），未确认dom序列中的尾移到头，进入下一次循环；不相似，进入第五步。
+第四步 尾头比较。若相似，旧尾指针前移，新头指针后移（即 `oldEndIdx--` && `newStartIdx++`），未确认dom序列中的尾移到头，进入下一次循环；不相似，进入第五步。
 
-第五步 若节点有key且在旧子节点数组中找到sameVnode（tag和key都一致），则将其dom移动到当前真实dom序列的头部，新头指针后移（即 \`newStartIdx++\`）；否则，vnode对应的dom（\`vnode\[newStartIdx\].elm\`）插入当前真实dom序列的头部，新头指针后移（即 \`newStartIdx++\`）。
+第五步 若节点有key且在旧子节点数组中找到sameVnode（tag和key都一致），则将其dom移动到当前真实dom序列的头部，新头指针后移（即 `newStartIdx++`）；否则，vnode对应的dom（`vnode[newStartIdx].elm`）插入当前真实dom序列的头部，新头指针后移（即 `newStartIdx++`）。
 
-但结束循环后，有两种情况需要考虑： - 新的字节点数组（newCh）被遍历完（\`newStartIdx > newEndIdx\`）。那就需要把多余的旧dom（\`oldStartIdx -> oldEndIdx\`）都删除，上述例子中就是\`c,d\`； - 新的字节点数组（oldCh）被遍历完（\`oldStartIdx > oldEndIdx\`）。那就需要把多余的新dom（\`newStartIdx -> newEndIdx\`）都添加。
+但结束循环后，有两种情况需要考虑： - 新的字节点数组（newCh）被遍历完（`newStartIdx > newEndIdx`）。那就需要把多余的旧dom（`oldStartIdx -> oldEndIdx`）都删除，上述例子中就是`c,d`； - 新的字节点数组（oldCh）被遍历完（`oldStartIdx > oldEndIdx`）。那就需要把多余的新dom（`newStartIdx -> newEndIdx`）都添加。
 
 ## 27，**说一说三栏布局的实现方案?**
 
@@ -703,9 +705,9 @@ Diff算法比较过程
 
 实现三栏布局的方法通常是圣杯布局和双飞翼布局。
 
-圣杯布局的实现方案：三个元素放在同一个父级元素中，代表中间盒子的元素放在最前面，父级盒子设置左右\`padding\`，三个盒子全部浮动，设置中间盒子宽度100%，左右盒子设置固定宽度，设置左边盒子左边距-100%同时相对自身定位，右边平移自身宽度，右边盒子设置右边距-自身宽度，最后设置父级盒子清除浮动，否则父级盒子的高度无法被撑开 双
+圣杯布局的实现方案：三个元素放在同一个父级元素中，代表中间盒子的元素放在最前面，父级盒子设置左右`padding`，三个盒子全部浮动，设置中间盒子宽度100%，左右盒子设置固定宽度，设置左边盒子左边距-100%同时相对自身定位，右边平移自身宽度，右边盒子设置右边距-自身宽度，最后设置父级盒子清除浮动，否则父级盒子的高度无法被撑开 双
 
-飞翼布局的实现方案：三个盒子对应三个元素，其中中间盒子套了两层，中间盒子内部盒子设置\`margin\`,三个盒子全部浮动，设置中间盒子宽度100%，左右盒子设置固定宽度,设置左边盒子左边距-100%,右边盒子设置右边距-自身宽度，最后设置父级盒子清除浮动，否则父级盒子的高度无法被撑开
+飞翼布局的实现方案：三个盒子对应三个元素，其中中间盒子套了两层，中间盒子内部盒子设置`margin`,三个盒子全部浮动，设置中间盒子宽度100%，左右盒子设置固定宽度,设置左边盒子左边距-100%,右边盒子设置右边距-自身宽度，最后设置父级盒子清除浮动，否则父级盒子的高度无法被撑开
 
 加分回答
 
@@ -725,27 +727,27 @@ Diff算法比较过程
 
 加分回答 Scavenge算法：
 
-1\. 标记：对对象区域中的垃圾进行标记
+1. 标记：对对象区域中的垃圾进行标记
 
-2\. 清除垃圾数据和整理碎片化内存：副垃圾回收器会把这些存活的对象复制到空闲区域中，并且有序的排列起来，复制后空闲区域就没有内存碎片了
+2. 清除垃圾数据和整理碎片化内存：副垃圾回收器会把这些存活的对象复制到空闲区域中，并且有序的排列起来，复制后空闲区域就没有内存碎片了
 
-3\. 角色翻转：完成复制后，对象区域与空闲区域进行角色翻转，也就是原来的对象区域变成空闲区域，原来的空闲区域变成了对象区域，这样就完成了垃圾对象的回收操作，同时这种角色翻转的操作还能让新生代中的这两块区域无限重复使用下去
+3. 角色翻转：完成复制后，对象区域与空闲区域进行角色翻转，也就是原来的对象区域变成空闲区域，原来的空闲区域变成了对象区域，这样就完成了垃圾对象的回收操作，同时这种角色翻转的操作还能让新生代中的这两块区域无限重复使用下去
 
 标记-清除算法：
 
-1\. 标记：标记阶段就是从一组根元素开始，递归遍历这组根元素，在这个遍历过程中，能到达的元素称为活动对象，没有到达的元素就可以判断为垃圾数据。
+1. 标记：标记阶段就是从一组根元素开始，递归遍历这组根元素，在这个遍历过程中，能到达的元素称为活动对象，没有到达的元素就可以判断为垃圾数据。
 
-2\. 清除：将垃圾数据进行清除。
+2. 清除：将垃圾数据进行清除。
 
-3\. 产生内存碎片：对一块内存多次执行标记 - 清除算法后，会产生大量不连续的内存碎片。而碎片过多会导致大对象无法分配到足够的连续内存。
+3. 产生内存碎片：对一块内存多次执行标记 - 清除算法后，会产生大量不连续的内存碎片。而碎片过多会导致大对象无法分配到足够的连续内存。
 
 标记-整理算法
 
-1\. 标记：和标记 - 清除的标记过程一样，从一组根元素开始，递归遍历这组根元素，在这个遍历过程中，能到达的元素标记为活动对象。
+1. 标记：和标记 - 清除的标记过程一样，从一组根元素开始，递归遍历这组根元素，在这个遍历过程中，能到达的元素标记为活动对象。
 
-2\. 整理：让所有存活的对象都向内存的一端移动
+2. 整理：让所有存活的对象都向内存的一端移动
 
-3\. 清除：清理掉端边界以外的内存 V8 是使用副垃圾回收器和主垃圾回收器处理垃圾回收的，不过由于 JavaScript 是运行在主线程之上的，一旦执行垃圾回收算法，都需要将正在执行的 JavaScript 脚本暂停下来，待垃圾回收完毕后再恢复脚本执行。我们把这种行为叫做全停顿。 为了降低老生代的垃圾回收而造成的卡顿，V8 将标记过程分为一个个的子标记过程，同时让垃圾回收标记和 JavaScript 应用逻辑交替进行，直到标记阶段完成，我们把这个算法称为增量标记（Incremental Marking）算法
+3. 清除：清理掉端边界以外的内存 V8 是使用副垃圾回收器和主垃圾回收器处理垃圾回收的，不过由于 JavaScript 是运行在主线程之上的，一旦执行垃圾回收算法，都需要将正在执行的 JavaScript 脚本暂停下来，待垃圾回收完毕后再恢复脚本执行。我们把这种行为叫做全停顿。 为了降低老生代的垃圾回收而造成的卡顿，V8 将标记过程分为一个个的子标记过程，同时让垃圾回收标记和 JavaScript 应用逻辑交替进行，直到标记阶段完成，我们把这个算法称为增量标记（Incremental Marking）算法
 
 ## 29，**说一说** **vue 的 keep-alive ？**
 
@@ -755,7 +757,7 @@ Diff算法比较过程
 
 标准回答
 
-\`<keep-alive>\`作用：缓存组件，提升性能，避免重复加载一些不需要经常变动且内容较多的组件。 \`<keep-alive>\`的使用方法：使用\`<keep-alive>\`标签对需要缓存的组件进行包裹，默认情况下被\`<keep-alive>\`标签包裹的组件都会进行缓存，
+`<keep-alive>`作用：缓存组件，提升性能，避免重复加载一些不需要经常变动且内容较多的组件。 `<keep-alive>`的使用方法：使用`<keep-alive>`标签对需要缓存的组件进行包裹，默认情况下被`<keep-alive>`标签包裹的组件都会进行缓存，
 
 区分被包裹的组件是否缓存有两种方法，
 
@@ -769,7 +771,7 @@ exclude 排除的组件(以为字符串，数组，以及正则表达式,任何�
 
 加分回答
 
-\`<keep-alive>\`适用的场景：首页展示固定数据的组件，比如banner九宫格</keep-alive></keep-alive></keep-alive></keep-alive></keep-alive>
+`<keep-alive>`适用的场景：首页展示固定数据的组件，比如banner九宫格</keep-alive></keep-alive></keep-alive></keep-alive></keep-alive>
 
 ## 30，**CSRF攻击是什么？**
 
@@ -871,7 +873,7 @@ ES6 的继承机制完全不同，实质是先将父类实例对象的属性和�
 
 标准回答
 
-浏览器会立即加载JS文件并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行 \`\` 加上async属性，加载JS文档和渲染文档可以同时进行（异步），当JS加载完成，JS代码立即执行，会阻塞HTML渲染。 \`\` 加上defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），当HTML渲染完成，才会执行JS代码。
+浏览器会立即加载JS文件并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行 `` 加上async属性，加载JS文档和渲染文档可以同时进行（异步），当JS加载完成，JS代码立即执行，会阻塞HTML渲染。 `` 加上defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），当HTML渲染完成，才会执行JS代码。
 
 加分回答
 
@@ -933,15 +935,15 @@ $nextTick的原理：$nextTick本质是返回一个Promise
 
 标准回答
 
-\`new\` 关键字会进行如下的操作：
+`new` 关键字会进行如下的操作：
 
-1\. 创建一个空的简单JavaScript对象（即\`{}\`）；
+1. 创建一个空的简单JavaScript对象（即`{}`）；
 
-2\. 为步骤1新创建的对象添加属性\`\_\_proto\_\_\`，将该属性链接至构造函数的原型对象 ；
+2. 为步骤1新创建的对象添加属性`__proto__`，将该属性链接至构造函数的原型对象 ；
 
-3\. 将步骤1新创建的对象作为\`this\`的上下文 ；
+3. 将步骤1新创建的对象作为`this`的上下文 ；
 
-4\. 如果该函数没有返回对象，则返回\`this\`。 加分回答 \`new\`关键字后面的构造函数不能是箭头函数。
+4. 如果该函数没有返回对象，则返回`this`。 加分回答 `new`关键字后面的构造函数不能是箭头函数。
 
 ## 38，**说一下token 能放在cookie中吗？**
 
@@ -953,23 +955,23 @@ $nextTick的原理：$nextTick本质是返回一个Promise
 
 能。
 
-token一般是用来判断用户是否登录的，它内部包含的信息有：uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign（签名，token 的前几位以哈希算法压缩成的一定长度的十六进制字符串） \`token\`可以存放在\`Cookie\`中，\`token\` 是否过期，应该由后端来判断，不该前端来判断，所以\`token\`存储在\`cookie\`中只要不设置\`cookie\`的过期时间就ok了，如果 \`token\` 失效，就让后端在接口中返回固定的状态表示\`token\` 失效，需要重新登录，再重新登录的时候，重新设置 \`cookie\` 中的 \`token\` 就行。
+token一般是用来判断用户是否登录的，它内部包含的信息有：uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign（签名，token 的前几位以哈希算法压缩成的一定长度的十六进制字符串） `token`可以存放在`Cookie`中，`token` 是否过期，应该由后端来判断，不该前端来判断，所以`token`存储在`cookie`中只要不设置`cookie`的过期时间就ok了，如果 `token` 失效，就让后端在接口中返回固定的状态表示`token` 失效，需要重新登录，再重新登录的时候，重新设置 `cookie` 中的 `token` 就行。
 
 加分回答
 
 token认证流程
 
-1\. 客户端使用用户名跟密码请求登录
+1. 客户端使用用户名跟密码请求登录
 
-2\. 服务端收到请求，去验证用户名与密码
+2. 服务端收到请求，去验证用户名与密码
 
-3\. 验证成功后，服务端签发一个 token ，并把它发送给客户端
+3. 验证成功后，服务端签发一个 token ，并把它发送给客户端
 
-4\. 客户端接收 token 以后会把它存储起来，比如放在 cookie 里或者 localStorage 里
+4. 客户端接收 token 以后会把它存储起来，比如放在 cookie 里或者 localStorage 里
 
-5\. 客户端每次发送请求时都需要带着服务端签发的 token（把 token 放到 HTTP 的 Header 里）
+5. 客户端每次发送请求时都需要带着服务端签发的 token（把 token 放到 HTTP 的 Header 里）
 
-6\. 服务端收到请求后，需要验证请求里带有的 token ，如验证成功则返回对应的数据
+6. 服务端收到请求后，需要验证请求里带有的 token ，如验证成功则返回对应的数据
 
 ## 39，**说一下浏览器输入URL发生了什么？**
 
@@ -1001,11 +1003,11 @@ DNS解析、TCP握手、HTTP缓存、重定向、服务器状态码、渲染引�
 
 父子通信、自定义属性、props、$emit、EventBus、$on、VueX 标准回答 Vue组件的通信方式分为两大类，一类是父子组件通信，另一类是任何关系类型组件通信（父子、兄弟、非兄弟）
 
-父子组件的通信方式： 父给子传递数据，通过给子组件添加自定义属性，比如：\`\`，list是父组件给子组件传递的数据。子获取父的数据，在子组件中使用props属性获取 子给父传递数据，通过给子组件传递父组件的方法，子组件调用父组件的方法传递数据，比如：\`\` ,deleteHandler就是父组件的函数，在子组件中通过this.$emit('方法名',参数)，调用父组件的方法，并把数据传递到父组件。
+父子组件的通信方式： 父给子传递数据，通过给子组件添加自定义属性，比如：``，list是父组件给子组件传递的数据。子获取父的数据，在子组件中使用props属性获取 子给父传递数据，通过给子组件传递父组件的方法，子组件调用父组件的方法传递数据，比如：`` ,deleteHandler就是父组件的函数，在子组件中通过this.$emit('方法名',参数)，调用父组件的方法，并把数据传递到父组件。
 
 props是只读，不可以被修改，所有被修改都会失效和被警告 任何关系类型组件通信（父子、兄弟、非兄弟）方式：
 
-EventBus： 使用方法是创建一个新的Vue实例，需要通信的组件都引入该Vue实例，传递数据的组件使用\` event.$emit('名称',参数)\`发送数据，接收数据的组件使用 \`event.$on('名称',方法)\`接收数据。
+EventBus： 使用方法是创建一个新的Vue实例，需要通信的组件都引入该Vue实例，传递数据的组件使用` event.$emit('名称',参数)`发送数据，接收数据的组件使用 `event.$on('名称',方法)`接收数据。
 
 VueX： 集中管理项目公共数据，Vuex 的状态存储是响应式的，当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。
 
@@ -1037,17 +1039,17 @@ v-show true/false都渲染 、 v-if true渲染 false不渲染
 
 得分点
 
-标准盒模型、怪异盒模型、\`box-sizing:border-box\`、盒模型大小
+标准盒模型、怪异盒模型、`box-sizing:border-box`、盒模型大小
 
 标准回答
 
 CSS盒模型定义了盒的每个部分包含 margin, border, padding, content 。根据盒子大小的计算方式不同盒模型分成了两种，标准盒模型和怪异盒模型。
 
-标准模型，给盒设置 \`width\` 和 \`height\`，实际设置的是 content box。\`padding\` 和 \`border \`再加上设置的宽高一起决定整个盒子的大小。
+标准模型，给盒设置 `width` 和 `height`，实际设置的是 content box。`padding` 和 `border `再加上设置的宽高一起决定整个盒子的大小。
 
-怪异盒模型，给盒设置 \`width\` 和 \`height\`，包含了\`padding\`和\`border \`，设置的 \`width\` 和 \`height\`就是盒子实际的大小
+怪异盒模型，给盒设置 `width` 和 `height`，包含了`padding`和`border `，设置的 `width` 和 `height`就是盒子实际的大小
 
-默认情况下，盒模型都是标准盒模型 设置标准盒模型：\`box-sizing:content-box\` 设置怪异盒模型：\`box-sizing:border-box\`
+默认情况下，盒模型都是标准盒模型 设置标准盒模型：`box-sizing:content-box` 设置怪异盒模型：`box-sizing:border-box`
 
 ## 43，**说一说伪数组和数组的区别？**
 
@@ -1057,7 +1059,7 @@ CSS盒模型定义了盒的每个部分包含 margin, border, padding, content �
 
 标准回答
 
-伪数组它的类型不是Array，而是Object，而数组类型是Array。可以使用的length属性查看长度，也可以使用\[index\]获取某个元素，但是不能使用数组的其他方法，也不能改变长度，遍历使用for in方法。
+伪数组它的类型不是Array，而是Object，而数组类型是Array。可以使用的length属性查看长度，也可以使用[index]获取某个元素，但是不能使用数组的其他方法，也不能改变长度，遍历使用for in方法。
 
 伪数组的常见场景：
 
@@ -1065,7 +1067,7 @@ CSS盒模型定义了盒的每个部分包含 margin, border, padding, content �
 
 加分回答
 
-伪数组转换成真数组方法 -Array.prototype.slice.call(伪数组) -\[\].slice.call(伪数组) -Array.from(伪数组) 转换后的数组长度由 \`length\` 属性决定。索引不连续时转换结果是连续的，会自动补位
+伪数组转换成真数组方法 -Array.prototype.slice.call(伪数组) -[].slice.call(伪数组) -Array.from(伪数组) 转换后的数组长度由 `length` 属性决定。索引不连续时转换结果是连续的，会自动补位
 
 ## 44，**说一说如何实现可过期的localstorage数据？**
 
@@ -1119,13 +1121,13 @@ new XMLHttpRequest()、设置请求参数open()、发送请求request.send()、�
 
 创建ajax过程：
 
-1\. 创建XHR对象：new XMLHttpRequest()
+1. 创建XHR对象：new XMLHttpRequest()
 
-2\. 设置请求参数：request.open(Method, 服务器接口地址);
+2. 设置请求参数：request.open(Method, 服务器接口地址);
 
-3\. 发送请求: request.send()，如果是get请求不需要参数，post请求需要参数request.send(data)
+3. 发送请求: request.send()，如果是get请求不需要参数，post请求需要参数request.send(data)
 
-4\. 监听请求成功后的状态变化：根据状态码进行相应的处理。 XHR.onreadystatechange = function () { if (XHR.readyState == 4 && XHR.status == 200) { console.log(XHR.responseText); // 主动释放,JS本身也会回收的 XHR = null; } };
+4. 监听请求成功后的状态变化：根据状态码进行相应的处理。 XHR.onreadystatechange = function () { if (XHR.readyState == 4 && XHR.status == 200) { console.log(XHR.responseText); // 主动释放,JS本身也会回收的 XHR = null; } };
 
 加分回答
 
@@ -1177,7 +1179,7 @@ SSE(Server-Sent Event)是建立在浏览器与服务器之间的通信渠道，�
 
 重绘：当一个元素的外观发生改变，但没有改变布局，重新把元素外观绘制出来的过程，所以重绘跳过了创建布局树和分层的阶段。 重排需要重新计算布局树，重绘不需要，重排必定发生重绘，但是涉及到重绘不一定要重排。涉及到重排对性能的消耗更多一些。
 
-触发重排的方法： -页面初始渲染，这是开销最大的一次重排 -添加/删除可见的DOM元素 -改变元素位置 -改变元素尺寸，比如边距、填充、边框、宽度和高度等 -改变元素内容，比如文字数量，图片大小等 -改变元素字体大小 -改变浏览器窗口尺寸，比如resize事件发生时 -激活CSS伪类（例如：\`:hover\`） -设置 style 属性的值，因为通过设置style属性改变结点样式的话，每一次设置都会触发一次reflow -查询某些属性或调用某些计算方法：offsetWidth、offsetHeight等 避免重排的方式 -样式集中改变 -使用 absolute 或 fixed 脱离文档流 -使用GPU加速:transform
+触发重排的方法： -页面初始渲染，这是开销最大的一次重排 -添加/删除可见的DOM元素 -改变元素位置 -改变元素尺寸，比如边距、填充、边框、宽度和高度等 -改变元素内容，比如文字数量，图片大小等 -改变元素字体大小 -改变浏览器窗口尺寸，比如resize事件发生时 -激活CSS伪类（例如：`:hover`） -设置 style 属性的值，因为通过设置style属性改变结点样式的话，每一次设置都会触发一次reflow -查询某些属性或调用某些计算方法：offsetWidth、offsetHeight等 避免重排的方式 -样式集中改变 -使用 absolute 或 fixed 脱离文档流 -使用GPU加速:transform
 
 加分回答
 
@@ -1207,9 +1209,9 @@ import、require
 
 vue-router 实现懒加载的方法有两种：
 
-ES6的impot方式: component: () => import(/\* webpackChunkName: "about" \*/ '../views/About.vue'),
+ES6的impot方式: component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
 
-VUE中的异步组件进行懒加载方式: component: resolve=>(require(\['../views/About'\],resolve))
+VUE中的异步组件进行懒加载方式: component: resolve=>(require(['../views/About'],resolve))
 
 加分回答
 
@@ -1309,7 +1311,7 @@ SSR是Server Side Render简称；页面上的内容是通过服务端渲染生�
 
 标准回答
 
-展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。常见的场景：等价于apply的方式、将数组展开为构造函数的参数、字面量数组或字符串连接不需要使用concat等方法了、构造字面量对象时,进行浅克隆或者属性拷贝 加分回答 只能用于可迭代对象 在数组或函数参数中使用展开语法时, 该语法只能用于 可迭代对象： var obj = {'key1': 'value1'}; var array = [...obj]; // TypeError: obj is not iterable 剩余语法（剩余参数） 剩余语法(Rest syntax) 看起来和展开语法完全相同，不同点在于, 剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素。
+展开语法(Spread syntax), 可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造字面量对象时, 将对象表达式按key-value的方式展开。常见的场景：等价于apply的方式、将数组展开为构造函数的参数、字面量数组或字符串连接不需要使用concat等方法了、构造字面量对象时,进行浅克隆或者属性拷贝 加分回答 只能用于可迭代对象 在数组或函数参数中使用展开语法时, 该语法只能用于 可迭代对象： `var obj = {'key1': 'value1'}; var array = [...obj];` // TypeError: obj is not iterable 剩余语法（剩余参数） 剩余语法(Rest syntax) 看起来和展开语法完全相同，不同点在于, 剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素。
 
 ```js
 function f(...[a, b, c]) { return a + b + c; } 
