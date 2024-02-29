@@ -171,7 +171,7 @@ BFC形成的条件 -`float `设置成 `left `或 `right` -`position `是`absolut
 
 BFC的方式都能清除浮动，但是常使用的清除浮动的BFC方式只有`overflow:hidden`,原因是使用float或者position方式清除浮动，虽然父级盒子内部浮动被清除了，但是父级本身又脱离文档流了，会对父级后面的兄弟盒子的布局造成影响。如果设置父级为`display:flex`，内部的浮动就会失效。所以通常只是用`overflow: hidden`清除浮动。
 
-IFC（Inline formatting contexts）：内联格式上下文。IFC的高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)，IFC中的line box一般左右都贴紧整个IFC，但是会因为float元素而扰乱。
+IFC（Inline formatting contexts）：内联格式上下文。IFC的高度由其包含行内元素中最高的实际高度计算而来 不受到竖直方向的padding/margin影响，IFC中的line box一般左右都贴紧整个IFC，但是会因为float元素而扰乱。
 
 GFC（GrideLayout formatting contexts）：网格布局格式化上下文。当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域。
 
@@ -407,13 +407,13 @@ null 其实属于自己的类型 Null，而不属于Object类型，typeof 之所
 
 箭头函数的不适用场景：
 
-定义对象上的方法 当调用` dog.jumps` 时，`lives` 并没有递减。因为 `this` 没有绑定值，而继承父级作用域。 var dog = { lives: 20, jumps: () => { this.lives--; } }
+定义对象上的方法 当调用` dog.jumps` 时，`lives` 并没有递减。因为 `this` 没有绑定值，而继承父级作用域。 `var dog = { lives: 20, jumps: () => { this.lives--; } }`
 
-不适合做事件处理程序 此时触发点击事件，this不是button，无法进行class切换 var button = document.querySelector('button'); button.addEventListener('click', () => { this.classList.toggle('on'); });
+不适合做事件处理程序 此时触发点击事件，this不是button，无法进行class切换 `var button = document.querySelector('button'); button.addEventListener('click', () => { this.classList.toggle('on'); });`
 
 箭头函数函数适用场景：
 
-简单的函数表达式，内部没有this引用，没有递归、事件绑定、解绑定，适用于map、filter等方法中，写法简洁 var arr = [1,2,3]; var newArr = arr.map((num)=>num*num)
+简单的函数表达式，内部没有this引用，没有递归、事件绑定、解绑定，适用于map、filter等方法中，写法简洁 `var arr = [1,2,3]; var newArr = arr.map((num)=>num*num)`
 
 内层函数表达式，需要调用this，且this应与外层函数一致时
 
@@ -771,7 +771,7 @@ exclude 排除的组件(以为字符串，数组，以及正则表达式,任何�
 
 加分回答
 
-`<keep-alive>`适用的场景：首页展示固定数据的组件，比如banner九宫格</keep-alive></keep-alive></keep-alive></keep-alive></keep-alive>
+`<keep-alive>`适用的场景：首页展示固定数据的组件
 
 ## 30，**CSRF攻击是什么？**
 
@@ -1209,9 +1209,9 @@ import、require
 
 vue-router 实现懒加载的方法有两种：
 
-ES6的impot方式: component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+ES6的impot方式: `component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')`,
 
-VUE中的异步组件进行懒加载方式: component: resolve=>(require(['../views/About'],resolve))
+VUE中的异步组件进行懒加载方式: `component: resolve=>(require(['../views/About'],resolve))`
 
 加分回答
 
