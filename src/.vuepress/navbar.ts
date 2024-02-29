@@ -36,7 +36,8 @@ export default navbar([
         children:[
           "jstabs",
           "dragmouse",
-          "babel"
+          "babel",
+          'web'
         ]
       },
     ],
